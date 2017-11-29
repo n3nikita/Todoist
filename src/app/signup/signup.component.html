@@ -1,0 +1,30 @@
+<div class="container">
+
+  <h3 style="text-align: center">Registration</h3>
+
+  <form #form="ngForm" class="login-form">
+
+    <input #username="ngModel" ngModel name="username" autocomplete="off" class="form-control" minlength="4" type="text" placeholder="Username"
+      (ngModelChange)="onUsernameChange($event)" required />
+
+    <div [hidden]="username.valid || username.untouched" class="error-block">
+      Invalid username. Minimum length: 4.
+    </div>
+
+    <div [hidden]="exist" class="error-block">
+      Username already exists.
+    </div>
+
+
+    <input #password="ngModel" ngModel name="password" autocomplete="off" class="form-control" type="password" minlength="8"
+      placeholder="Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" />
+
+    <div [hidden]="password.valid || password.untouched" class="error-block">
+      Minimum length: 8. Must contain at least one UpperCase, LowerCase and Number.
+    </div>
+
+    <button [disabled]="form.invalid || !exist" class="btn" (click)="signup(username.value, password.value)" type="submit">Sign Up</button>
+  
+  </form>
+
+</div>

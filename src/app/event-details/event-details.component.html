@@ -1,0 +1,35 @@
+<div *ngIf="done" class="container">
+
+    <div [ngClass]="{invisible: visibility}">
+        <h3>{{event.name}}<span> ({{event.date | date:"dd.MM"}})</span></h3>
+        <p>{{event.details}} </p>
+        <div class="details-img">
+            <a target="_blank" href="{{event.image}}"><img src="{{event.image}}" alt="{{event.name}}" class="img-responsive" ></a>
+        </div>
+        <button *ngIf="auth.isLoggedIn()" id="btnEdt" class="btn" (click)="allowEdit()">Edit</button>
+        <a routerLink="/" class="btn">Back to all items</a>
+    </div>
+
+
+    <div [ngClass]="{invisible: !visibility}">
+        <input [(ngModel)]="event.name" class="form-control" placeholder="Name" minlength="1" required />
+        <input [(ngModel)]="event.details" class="form-control" placeholder="Details" minlength="1" required />
+
+        <input [ngModel]="event.date | date:'yyyy-MM-dd'"  #date="ngModel" class="form-control" type="date"
+                minDate="2000-01-01" maxDate="2099-01-01" maxlength="10" required />
+        <div [hidden]="!date.invalid" class="error-block">
+            Date must be between 2000 and 2099
+        </div>
+        <div class="details-img">
+            <a target="_blank" href="{{event.image}}"><img src="{{event.image}}" alt="{{event.name}}" class="img-responsive" ></a>
+        </div>
+        
+        <label class="btn btn-default btn-file">
+                Image<input type="file" class="input-file" #image name="image" (change)="getImage(image.files)" accept="image/*" required>
+        </label>
+
+        <button id="btnSave" class="btn" (click)="editEvent(event)">Save</button>
+        <a routerLink="/" class="btn">Back to all items</a>
+    </div>
+
+</div>

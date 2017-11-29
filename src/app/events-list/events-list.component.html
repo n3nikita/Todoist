@@ -1,0 +1,24 @@
+<div class="container">
+
+  <ul class="events">
+      <event *ngFor="let event of events" 
+             [event]=event 
+             (deleter)="delete($event)">
+      </event>
+  </ul>
+
+  <form #form="ngForm">
+    <div class="form-inline add-form" *ngIf="auth.isLoggedIn()">
+
+      <input #name="ngModel" ngModel name="name" class="form-control" placeholder="Name" required/>
+      <input #details="ngModel" ngModel name="details" class="form-control" placeholder="Details" required/>
+      <input #date="ngModel" ngModel name="date" class="form-control" type="date" value="now" minDate="2000-01-01"  maxDate="2099-01-01" maxlength="10"  required />
+      <label class="btn btn-default btn-file">
+        Image<input #image name="image" (change)="getImage(image.files)" type="file" accept="image/*" required/>
+      </label>
+      <button [disabled]="form.invalid" class="btn" (click)="add(name.value, details.value, date.value)">Add</button>
+
+    </div>
+  </form>
+
+</div>

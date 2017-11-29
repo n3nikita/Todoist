@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h3 style="text-align: center">Log In</h3>
+
+  <form class="login-form" #form="ngForm">
+
+    <input #username="ngModel" ngModel name="username" class="form-control" type="text" minlength="4" 
+      (ngModelChange)="onChange($event)"
+      placeholder="Username" required />
+
+    <input #password="ngModel" ngModel name="password" class="form-control" type="password" minlength="8" 
+      (ngModelChange)="onChange($event)"
+      placeholder="Password" required />
+      
+    <div class="error-block" *ngIf="invalid">
+      Invalid username or password.
+    </div>
+
+    <button [disabled]="form.invalid" class="btn" (click)="login(username.value, password.value)" type="submit">Log In</button>
+    <a style="margin-left: 10px" routerLink="/signup">Sign up</a>
+
+  </form>
+
+</div>

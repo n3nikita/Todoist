@@ -1,0 +1,45 @@
+li{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #E0E0E0;
+    transition: all 0.2s ease;
+}
+
+li:hover{
+    background-color: #CECECE;
+}
+
+.date{
+    float: right;
+    margin-right: 20px;
+}
+
+
+li button{
+    float: right;
+    height: 30px;
+    color: #3A3A3A;
+    background-color: #FC5757;
+    margin-top: 10px;
+    margin-right: 5px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    padding: 0;
+    border-radius: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.vis{
+    display: none;
+}
+
+.input-file{
+    display: block;
+    padding: 0;   
+ }
