@@ -14,7 +14,7 @@
      overflow: hidden;
  }
 
- .details-img:hover { 
+ .details-img:hover {
     opacity: 0.9;
     transition: 0.2s ease;
  }
@@ -45,6 +45,7 @@
     position: relative;
     overflow: hidden;
     width: 200px;
-    margin: 10px 10px; 
+    margin: 10px 0;
     display: block;
  }
+

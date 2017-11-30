@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
   image: File;
   done: boolean = false;
   regExp: RegExp = new RegExp('image/(gif|jpg|jpeg|png)');
-  
+
 
   constructor(
     private eventService: EventService,
@@ -32,7 +32,7 @@ export class EventDetailsComponent implements OnInit {
     this.getEvent();
   }
 
-  getEvent(){
+  getEvent() {
     let id = +this.route.snapshot.paramMap.get('id');
     this.eventService.getEvent(id).subscribe( res => { this.event = res; this.done = true; });
   }
@@ -47,42 +47,42 @@ export class EventDetailsComponent implements OnInit {
             .subscribe(
             res => {
               this.visibility = !this.visibility;
-              this.notify.success('Edited successfully', 'Event has been deleted')
+              this.notify.success('Edited successfully', 'Event has been deleted');
             },
             err => this.notify.error('Error!', 'Edit error')
             );
         },
         err => this.notify.error('Error!', 'Image wasnt upload to the server')
-        )
+        );
     } else {
       this.eventService.putEvent(event)
         .subscribe(
         res => {
           this.visibility = !this.visibility;
-          this.notify.success('Edited successfully', 'Event has been deleted')
+          this.notify.success('Edited successfully', 'Event has been edited');
         },
         err => this.notify.error('Error!', 'Edit error')
         );
     }
   }
-  
-  allowEdit(){
+
+  allowEdit() {
     this.visibility = !this.visibility;
   }
 
-  getImage(images){
-    if(this.regExp.test(images[0].type)){
+  getImage(images) {
+    if (this.regExp.test(images[0].type)) {
       this.image = images[0];
 
-      // let reader: FileReader = new FileReader();      
+      // let reader: FileReader = new FileReader();
       // let previewSrc: string;
       // reader.onload = function(e) {
       //   previewSrc = e.target.result;
       // }
-      // reader.readAsDataURL(images[0]);  
-    }
-    else
+      // reader.readAsDataURL(images[0]);
+    } else {
       this.notify.error('Error!', 'Only images allowed');
+    }
   }
 
 }
