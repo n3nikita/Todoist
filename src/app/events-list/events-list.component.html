@@ -1,8 +1,15 @@
 <div class="container">
 
+  <div class="search-bar">
+    <input #s class="form-control" type="text" placeholder="Search" (input)="search(s.value)" >
+    <div [hidden]="!notFound" class="error-block">
+      Not found
+    </div>
+  </div>
+
   <ul class="events">
-      <event *ngFor="let event of events" 
-             [event]=event 
+      <event *ngFor="let event of events"
+             [event]=event
              (deleter)="delete($event)">
       </event>
   </ul>

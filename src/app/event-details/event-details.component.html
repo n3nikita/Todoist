@@ -7,7 +7,7 @@
             <a target="_blank" href="{{event.image}}"><img src="{{event.image}}" alt="{{event.name}}" class="img-responsive" ></a>
         </div>
         <button *ngIf="auth.isLoggedIn()" id="btnEdt" class="btn" (click)="allowEdit()">Edit</button>
-        <a routerLink="/" class="btn">Back to all items</a>
+        <a (click)="goBack()" class="btn">Back to all items</a>
     </div>
 
 
@@ -29,7 +29,7 @@
         </label>
 
         <button id="btnSave" class="btn" (click)="editEvent(event)">Save</button>
-        <a routerLink="/" class="btn">Back to all items</a>
+        <a (click)="goBack()" class="btn">Back to all items</a>
     </div>
 
 </div>

@@ -7,11 +7,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
+import { EventsDashboardComponent } from './events-dashboard/events-dashboard.component';
 
 const routes = [
-  { path: '', redirectTo: '/events', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'events', component: EventsListComponent },
   { path: 'detail/:id', component: EventDetailsComponent },
+  { path: 'dashboard', component: EventsDashboardComponent },
   { path: 'about', component: AppAboutComponent, canActivate: [ AuthGuard ] },
   { path: 'login', component: LoginComponent  },
   { path: 'signup', component: SignupComponent },

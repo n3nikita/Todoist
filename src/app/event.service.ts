@@ -28,6 +28,11 @@ export class EventService {
       .catch(this.handleError);
   }
 
+  search(serachStr: string){
+    return this.http.get(this.url + 'search/' + serachStr, httpOptions)
+      .catch(this.handleError);
+  }
+
   postEvent(event: Event): Observable<any>{
     return this.http.post<Event>(this.url, event, httpOptions)
       .catch(this.handleError);
@@ -36,7 +41,7 @@ export class EventService {
   postEventImg(img: File): Observable<any>{
     // return this.http.post(this.url + 'img', img, imgHeader)
     //   .catch(this.handleError);
-    
+
     // return Observable.fromPromise(new Promise((resolve, reject) => {
     //   let xhr = new XMLHttpRequest();
     //   xhr.open('POST', this.url + 'img', true);
@@ -46,7 +51,7 @@ export class EventService {
     //   xhr.send(formData);
     //         if (xhr.status === 200) {
     //             resolve(JSON.parse(xhr.response))
-    //         } else 
+    //         } else
     //             reject(xhr.response)
     // }));
 

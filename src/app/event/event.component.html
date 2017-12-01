@@ -1,9 +1,9 @@
 <li class="row">
   <a class="col-md-10"  routerLink="/detail/{{event.id}}">
-    {{event.id}}. {{event.name}} 
+    {{event.id}}. {{event.name}}
   </a>
-  
-  <button class="col-md-2"  [ngClass]="{vis: !auth.isLoggedIn()}" class="btn" (click)="delete(event)">
+
+  <button class="col-md-2 btn"  [ngClass]="{vis: !auth.isLoggedIn()}" (click)="delete(event)">
     <span class="glyphicon glyphicon-trash"></span>
   </button>
   <span class="date">{{event.date | date:"dd.MM"}}</span>

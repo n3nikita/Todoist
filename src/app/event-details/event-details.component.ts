@@ -4,7 +4,7 @@ import { EventService } from '../event.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { NotificationsService } from 'angular2-notifications';
-
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -25,7 +25,8 @@ export class EventDetailsComponent implements OnInit {
     private eventService: EventService,
     private route: ActivatedRoute,
     private auth: AuthService,
-    private notify: NotificationsService
+    private notify: NotificationsService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -83,6 +84,10 @@ export class EventDetailsComponent implements OnInit {
     } else {
       this.notify.error('Error!', 'Only images allowed');
     }
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 }

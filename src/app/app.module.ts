@@ -15,7 +15,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventComponent } from './event/event.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
-import { CustomFormsModule } from 'ng2-validation'
+import { CustomFormsModule } from 'ng2-validation';
+import { EventsDashboardComponent } from './events-dashboard/events-dashboard.component';
+import { EventDashComponent } from './event-dash/event-dash.component'
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { CustomFormsModule } from 'ng2-validation'
     NotFoundComponent,
     LoginComponent,
     SignupComponent,
-    EventComponent
+    EventComponent,
+    EventsDashboardComponent,
+    EventDashComponent
   ],
   imports: [
     BrowserModule,

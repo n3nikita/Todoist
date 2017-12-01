@@ -15,7 +15,8 @@ export class EventsListComponent implements OnInit {
 
   events: Event[];
   image: File;
-  regExp: RegExp = new RegExp('image/(jpg|jpeg|gif|png)'); 
+  regExp: RegExp = new RegExp('image/(jpg|jpeg|gif|png)');
+  notFound: boolean = false;
 
 
   constructor(private eventService: EventService,
@@ -37,7 +38,7 @@ export class EventsListComponent implements OnInit {
         image => {
           let event: Event = {id: this.events.length+1, name, details, date, image} as Event;
           this.eventService.postEvent(event)
-            .subscribe( 
+            .subscribe(
               res => {
                 this.events.push(res);
                 this.notify.success('Added successfully!', 'Event has been added.');
@@ -59,7 +60,7 @@ export class EventsListComponent implements OnInit {
       .subscribe(
         res => {
           this.events.splice(index,1)
-          this.notify.success('Deleted!', 'Event has been deleted.');          
+          this.notify.success('Deleted!', 'Event has been deleted.');
         },
         err => this.notify.error('Error!', 'Event wasnt deleted')
       );
@@ -70,5 +71,21 @@ export class EventsListComponent implements OnInit {
       this.image = images[0];
     else
       this.notify.error('Error!', 'Only images allowed');
+  }
+
+  search(searchStr: string){
+    if(searchStr.length == 0){
+      this.notFound = false;
+      return this.getEvents();
+    }
+
+    return this.eventService.search(searchStr)
+      .subscribe(
+        res => {
+          this.events = res;
+          this.notFound = false;
+        },
+        err => this.notFound = true
+      );
   }
 }
