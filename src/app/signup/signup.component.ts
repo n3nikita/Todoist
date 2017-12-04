@@ -12,13 +12,13 @@ export class SignupComponent  {
 
   exist: boolean = true;
 
-  constructor(private authSerice: AuthService,
+  constructor(private authService: AuthService,
               private router: Router) { }
 
 
   signup(username: string, password: string){
     let user: User = {username, password} as User;
-    this.authSerice.signUp(user)
+    this.authService.signUp(user)
       .subscribe(
         () => this.router.navigateByUrl('/'),
         err => this.exist = false

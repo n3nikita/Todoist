@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { NotificationsService, SimpleNotificationsModule } from 'angular2-notifications';
 import { Location, LocationStrategy, PathLocationStrategy, APP_BASE_HREF  } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { EventDetailsComponent } from './event-details.component';
 
@@ -13,10 +14,10 @@ describe('EventDetailsComponent', () => {
   let component: EventDetailsComponent;
   let fixture: ComponentFixture<EventDetailsComponent>;
   let mockRouter = {
-    navigate: jasmine.createSpy('detail/1')
+    navigate: jasmine.createSpy('navigate')
   };
   let mockActivatedRouter = {
-    params: jasmine.createSpy('detail/1')
+    snapshot: {data: {id: '1' } },
   };
 
 
@@ -34,14 +35,17 @@ describe('EventDetailsComponent', () => {
         AuthService,
         EventService,
         Location,
-        //LocationStrategy,
         { provide: LocationStrategy, useClass: PathLocationStrategy },
-        // { provide: APP_BASE_HREF, useValue: '/detail/1'},
+        //{ provide: APP_BASE_HREF, useValue: '/details/1'},
         NotificationsService,
-        { provide: ComponentFixtureAutoDetect, useValue: true },
+        //{ provide: ComponentFixtureAutoDetect, useValue: true },
         { provide: Router, useValue: mockRouter },
         { provide: ActivatedRoute, useValue: mockActivatedRouter }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ]
+
     })
     .compileComponents();
   }));

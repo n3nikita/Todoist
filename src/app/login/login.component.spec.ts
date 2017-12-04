@@ -13,18 +13,18 @@ describe('LoginComponent', () => {
   let mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
-  let mockAuthService = {
-    isLoggedIn: true,
-  };
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule,
+      imports: [
+        HttpClientModule,
         FormsModule,
-        SimpleNotificationsModule],
+        SimpleNotificationsModule
+      ],
       declarations: [ LoginComponent ],
       providers: [
-        { provide: AuthService, useValue: mockAuthService },
+        AuthService,
         { provide: Router, useValue: mockRouter }
       ]
     })

@@ -1,13 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SimpleNotificationsModule } from 'angular2-notifications';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AuthService } from './auth.service';
 
 
 let mockRouter = {
-  navigate: jasmine.createSpy('/')
+  navigate: jasmine.createSpy('navigate')
 };
 
 
@@ -15,8 +15,6 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        SimpleNotificationsModule,
-        RouterModule,
         HttpClientModule
       ],
       declarations: [
@@ -25,6 +23,9 @@ describe('AppComponent', () => {
       providers: [
         AuthService,
         { provide: Router, useValue: mockRouter }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ]
     }).compileComponents();
   }));
@@ -33,12 +34,12 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'app'`, async(() => {
+  it(`should have name 'Todoist'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Todoist');
+    expect(app.name).toEqual('Todoist');
   }));
-  it('should render title in a h1 tag', async(() => {
+  it('should render name in a h1 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

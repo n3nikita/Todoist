@@ -9,7 +9,7 @@ import { AuthGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
 import { EventsDashboardComponent } from './events-dashboard/events-dashboard.component';
 
-const routes = [
+export const routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'events', component: EventsListComponent },
   { path: 'detail/:id', component: EventDetailsComponent },
