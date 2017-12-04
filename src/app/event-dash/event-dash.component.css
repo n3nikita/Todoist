@@ -1,0 +1,76 @@
+h1{
+  margin: 0;
+  padding: 20px 0;
+  color: black;
+  background-color: white;
+}
+
+p{
+  margin-top: 10px;
+  color: black;
+  font-size: 19px;
+}
+
+.event-dash{
+  padding: 0 ;
+  text-align: center;
+  width: 350px;
+  height: 300px;
+  margin: 10px 20px;
+  box-shadow: 1px 1px 2px 0px gray;
+}
+
+.dash-link:focus{
+  outline: none;
+}
+
+.dash-link:active {
+  transform: scale(0.8);
+}
+
+.dash-link:hover{
+  opacity: 0.8;
+}
+
+.dash-link{
+  transition: all 0.3s ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.77);
+}
+
+.event-dash-img{
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height:100%;
+  opacity: 0.1;
+  filter: blur(1px);
+}
+
+
+.btn-delete{
+  position: absolute;
+  left: 320px;
+  bottom: 270px;
+  text-align: center;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+  line-height: 13px;
+  background-color: #FC5757;
+}
+
+.date-span{
+  background-color: white;
+  color: black;
+  height: 30px;
+  width: 100px;
+  margin: 150px auto 0;
+  border: 1px solid #cacaca;
+  border-radius: 5px;
+  line-height: 30px;
+  display: block;
+}

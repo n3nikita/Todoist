@@ -1,0 +1,67 @@
+.search-bar input{
+  width: 300px;
+  margin: 20px auto;
+}
+
+.search-bar .error-block {
+  width: 300px;
+  margin: -20px auto 0;
+}
+
+.event-add{
+  padding: 0 ;
+  text-align: center;
+  width: 350px;
+  height: 300px;
+  margin: 10px 20px;
+  background-color: #ececec;
+  line-height: 300px;
+  font-size: 70px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.event-add:hover{
+  background-color: #d4d4d4;
+}
+
+.event-add-clikced{
+  padding-top: 20px;
+  width: 350px;
+  height: 300px;
+  margin: 10px 20px;
+  box-shadow: 1px 1px 2px 0px gray;
+}
+
+.event-add-clikced input{
+  width: 300px;
+  margin: 20px auto;
+}
+
+.btn-file input[type=file]{
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.btn-file{
+  position: relative;
+  overflow: hidden;
+  margin: -5px 10px 10px;
+}
+
+.error-block{
+  margin-top: -20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}

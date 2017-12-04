@@ -1,0 +1,13 @@
+<div class="col-md-4 event-dash">
+  <a class="dash-link" routerLink="/detail/{{event.id}}" >
+
+
+  <img src="{{event.image}}" class="img-responsive event-dash-img" alt="{{event.name}}">
+  <h1>{{event.name}}</h1>
+  <p>{{event.details}}</p>
+    <span class="date-span">{{event.date | date: "dd.MM.yyy"}}</span>
+  </a>
+  <button *ngIf="auth.isLoggedIn()" (click)="deleteEvn(event)" class="btn btn-delete">
+    x
+  </button>
+</div>
