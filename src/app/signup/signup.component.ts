@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
@@ -8,15 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent  {
 
   exist: boolean = true;
 
   constructor(private authSerice: AuthService,
               private router: Router) { }
 
-  ngOnInit() {
-  }
 
   signup(username: string, password: string){
     let user: User = {username, password} as User;

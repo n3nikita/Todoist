@@ -10,6 +10,7 @@
 
   <div class="row">
     <app-event-dash *ngFor="let event of events" [event]="event" (deleter)="delete($event)"></app-event-dash>
+    <div *ngIf="auth.isLoggedIn()">
     <div *ngIf="!addClicked" (click)="addClicked = !addClicked"  class="col-md-4 event-add">+</div>
     <div *ngIf="addClicked" class="col-md-4 event-add-clikced">
       <form #form="ngForm">
@@ -26,6 +27,7 @@
       </form>
       <button style="margin-left: 10px" [disabled]="form.invalid" (click)="add(name.value, details.value, date.value)" class="btn">Add</button>
       <button (click)="addClicked = !addClicked" class="btn">Cancel</button>
+    </div>
     </div>
   </div>
 

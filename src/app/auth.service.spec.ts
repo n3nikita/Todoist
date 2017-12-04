@@ -1,11 +1,22 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
+  let mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      imports: [ HttpClientModule],
+      providers: [
+        AuthService,
+        { provide: Router, useValue: mockRouter }
+      ]
     });
   });
 

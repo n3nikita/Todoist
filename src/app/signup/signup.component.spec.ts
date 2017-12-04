@@ -4,16 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-
-
+import { User } from '../user';
 
 import { SignupComponent } from './signup.component';
+
+let authService: AuthService;
+let mockUser: User;
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
   let mockRouter = {
     navigate: jasmine.createSpy('navigate')
+  };
+  let mockAuthService = {
+    isLoggedIn: true,
   };
 
   beforeEach(async(() => {
@@ -22,11 +27,13 @@ describe('SignupComponent', () => {
         FormsModule,
         SimpleNotificationsModule],
       declarations: [ SignupComponent ],
-      providers: [ AuthService,
+      providers: [
+        { provide: AuthService, useValue: mockAuthService },
         { provide: Router, useValue: mockRouter }
-        ]
-    })
-    .compileComponents();
+      ]
+    }).compileComponents();
+
+    authService = TestBed.get(AuthService);
   }));
 
   beforeEach(() => {

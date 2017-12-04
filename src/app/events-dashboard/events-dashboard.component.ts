@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { Event } from '../Event';
 import { NotificationsService } from 'angular2-notifications';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class EventsDashboardComponent implements OnInit {
 
   constructor(
     private eventService: EventService,
-    private notify: NotificationsService
+    private notify: NotificationsService,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {

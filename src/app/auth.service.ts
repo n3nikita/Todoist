@@ -34,11 +34,11 @@ export class AuthService {
   }
 
   private setSession(authResult, username) {
-    console.log('Token: ' + authResult)
+    console.log('Token: ' + authResult);
     localStorage.setItem('token', authResult);
     localStorage.setItem('username', username);
-    this.name = username;    
-  }   
+    this.name = username;
+  }
 
   public logout() {
     localStorage.clear();
@@ -57,7 +57,7 @@ export class AuthService {
     if(error.status === 401){
       console.log('Invalid login or password');
       return Observable.throw(error);
-    }    
+    }
     return Observable.throw(error.message || error);
   }
 }

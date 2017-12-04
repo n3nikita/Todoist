@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import { Event } from '../event';
 import { AuthService } from '../auth.service';
 import { EventEmitter } from '@angular/core';
@@ -9,7 +9,7 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './event-dash.component.html',
   styleUrls: ['./event-dash.component.css']
 })
-export class EventDashComponent implements OnInit {
+export class EventDashComponent  {
 
   @Input()
   event: Event;
@@ -19,9 +19,6 @@ export class EventDashComponent implements OnInit {
 
 
   constructor(private auth: AuthService) { }
-
-  ngOnInit() {
-  }
 
   deleteEvn(event){
     this.deleter.emit(event);

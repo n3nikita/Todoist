@@ -18,7 +18,7 @@ export class EventService {
 
   constructor(private http: HttpClient) {}
 
-  getEvents() {
+  getEvents(): Observable<any> {
     return this.http.get(this.url)
       .catch(this.handleError)
   }
@@ -28,8 +28,8 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  search(serachStr: string){
-    return this.http.get(this.url + 'search/' + serachStr, httpOptions)
+  search(searchStr: string): Observable<any>{
+    return this.http.get(this.url + 'search/' + searchStr, httpOptions)
       .catch(this.handleError);
   }
 
@@ -91,5 +91,5 @@ const imgHeader: any = {
 const txtHeader: any = {
   headers: new HttpHeaders({ 'Authorization' : 'Bearer ' + localStorage.getItem('token')}),
   responseType: 'text'
-}
+};
 
