@@ -25,7 +25,7 @@
   background-color: #d4d4d4;
 }
 
-.event-add-clikced{
+.event-add-clicked{
   padding-top: 20px;
   width: 350px;
   height: 300px;
@@ -33,7 +33,7 @@
   box-shadow: 1px 1px 2px 0px gray;
 }
 
-.event-add-clikced input{
+.event-add-clicked input{
   width: 300px;
   margin: 20px auto;
 }

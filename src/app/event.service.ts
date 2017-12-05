@@ -9,8 +9,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 
-
-
 @Injectable()
 export class EventService {
 
@@ -69,7 +67,7 @@ export class EventService {
   }
 
   deleteEvent(id: number): Observable<any> {
-    return this.http.delete(this.url+id, txtHeader)
+    return this.http.delete(this.url + id, txtHeader)
       .catch(this.handleError);
   }
 

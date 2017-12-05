@@ -1,31 +1,35 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-import { Router, RouterModule } from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './auth.guard';
 
 describe('AuthGuardGuard', () => {
-  let mockRouter = {
-    navigate: jasmine.createSpy('/login')
-  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterModule,
+        RouterTestingModule,
         HttpClientModule
       ],
       providers: [
         AuthGuard,
         AuthService,
-        { provide: Router, useValue: mockRouter }
-
       ]
     });
   });
 
-  it('should ...', inject([AuthGuard], (guard: AuthGuard) => {
+  it('should create', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard).toBeTruthy();
+  }));
+
+  it('user is valid', inject([AuthGuard], (guard: AuthGuard) => {
+    async(inject([AuthGuard, Router], (auth, router) => {
+        spyOn(router, 'navigate');
+        expect(auth.canActivate()).toBeFalsy();
+        expect(router.navigate).toHaveBeenCalled();
+      }));
   }));
 });

@@ -12,12 +12,12 @@
     <app-event-dash *ngFor="let event of events" [event]="event" (deleter)="delete($event)"></app-event-dash>
     <div *ngIf="auth.isLoggedIn()">
     <div *ngIf="!addClicked" (click)="addClicked = !addClicked"  class="col-md-4 event-add">+</div>
-    <div *ngIf="addClicked" class="col-md-4 event-add-clikced">
+    <div *ngIf="addClicked" class="col-md-4 event-add-clicked">
       <form #form="ngForm">
         <input #name="ngModel" ngModel name="name" class="form-control" placeholder="Name" required/>
         <input #details="ngModel" ngModel name="details" class="form-control" placeholder="Details" required/>
         <input #date="ngModel" ngModel name="date" class="form-control" type="date" value="now" minDate="2000-01-01"  maxDate="2099-01-01" maxlength="10"  required />
-        <div [hidden]="!date.valid && date.untouched" class="error-block">
+        <div [hidden]="date.untouched || !date.invalid" class="error-block">
           Date must be between 2000 and 2099
         </div>
 

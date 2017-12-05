@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
 import { Event } from '../event';
 import { AuthService } from '../auth.service';
 import { EventService } from '../event.service';
@@ -10,7 +10,7 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
-export class EventComponent {
+export class EventComponent implements OnInit{
 
   @Output()
   deleter: EventEmitter<Event> = new EventEmitter();
@@ -22,7 +22,13 @@ export class EventComponent {
               private auth: AuthService) { }
 
 
-  delete(event){
+  ngOnInit(){
+    if(!this.event){
+      this.event = new Event(1, 'test', 'test', new Date(), 'test');
+    }
+  }
+
+  deleteEvent(event){
     this.deleter.emit(event);
   }
 }

@@ -4,7 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import {By} from '@angular/platform-browser';
+import { DebugElement }    from '@angular/core';
+
 
 import { SignupComponent } from './signup.component';
 
@@ -13,9 +16,8 @@ import { SignupComponent } from './signup.component';
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
-  let mockRouter = {
-    navigate: jasmine.createSpy('navigate')
-  };
+  let de: DebugElement;
+  let el: HTMLElement;
 
 
   beforeEach(async(() => {
@@ -23,12 +25,12 @@ describe('SignupComponent', () => {
       imports: [
         FormsModule,
         SimpleNotificationsModule,
-        HttpClientModule
+        HttpClientModule,
+        RouterTestingModule
       ],
       declarations: [ SignupComponent ],
       providers: [
         AuthService,
-        { provide: Router, useValue: mockRouter }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
@@ -45,5 +47,11 @@ describe('SignupComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain h3 with `Registration`', () => {
+    de = fixture.debugElement.query(By.css('h3'));
+    el = de.nativeElement;
+    expect(el.innerText).toBe('Registration');
   });
 });

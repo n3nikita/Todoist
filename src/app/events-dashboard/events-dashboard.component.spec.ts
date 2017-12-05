@@ -4,9 +4,11 @@ import { AuthService } from '../auth.service';
 import { FormsModule }  from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EventService } from '../event.service';
-import { RouterModule, Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NotificationsService, SimpleNotificationsModule } from 'angular2-notifications';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {By} from '@angular/platform-browser';
+import { DebugElement }    from '@angular/core';
 
 
 import { EventsDashboardComponent } from './events-dashboard.component';
@@ -15,24 +17,24 @@ import { EventsDashboardComponent } from './events-dashboard.component';
 describe('EventsDashboardComponent', () => {
   let component: EventsDashboardComponent;
   let fixture: ComponentFixture<EventsDashboardComponent>;
-  let mockRouter = {
-    navigate: jasmine.createSpy('navigate')
-  };
+  let de: DebugElement;
+  let el: HTMLElement;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         SimpleNotificationsModule,
         FormsModule,
-        RouterModule,
-        HttpClientModule
+        HttpClientModule,
+        RouterTestingModule
       ],
       declarations: [ EventsDashboardComponent, EventDashComponent ],
       providers: [
         AuthService,
         EventService,
         NotificationsService,
-        { provide: Router, useValue: mockRouter }
+
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
@@ -49,5 +51,18 @@ describe('EventsDashboardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+
+  it('should contain search bar', () => {
+    de = fixture.debugElement.query(By.css('.search-bar'));
+    el = de.nativeElement;
+    expect(el).not.toBeNull();
+  });
+
+  it('should contain event add button', () => {
+    de = fixture.debugElement.query(By.css('.event-add'));
+    el = de.nativeElement;
+    expect(el).not.toBeNull();
   });
 });

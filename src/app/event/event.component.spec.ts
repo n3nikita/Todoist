@@ -1,54 +1,47 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Directive } from '@angular/core';
+import { async, ComponentFixture, TestBed, ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { EventService } from '../event.service';
-import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationStrategy, PathLocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Event } from '../event';
+import { RouterTestingModule} from '@angular/router/testing';
+import { EventDetailsComponent} from '../event-details/event-details.component';
+import { FormsModule } from '@angular/forms';
+import {By} from '@angular/platform-browser';
+import { DebugElement }    from '@angular/core';
+
 
 import { EventComponent } from './event.component';
 
-@Directive({
-  selector: '[routerLink], [routerLinkActive]'
-})
-class DummyRouterLinkDirective {}
 
 describe('EventComponent', () => {
   let component: EventComponent;
   let fixture: ComponentFixture<EventComponent>;
-
-
-  let mockRouter = {
-    navigate: jasmine.createSpy('navigate')
-  };
-  let mockActivatedRouter = {
-    snapshot: {data: {id: '1' } },
-  };
-
-
+  let event: Event;
+  let de: DebugElement;
+  let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
-        RouterModule
+        RouterTestingModule.withRoutes([
+          { path: 'detail/:id', component: EventDetailsComponent },
+        ]),
+        FormsModule
+
       ],
-      declarations: [ EventComponent ],
+      declarations: [ EventComponent, EventDetailsComponent ],
       providers: [
         AuthService,
         EventService,
-        //ActivatedRoute,
-        { provide: ActivatedRoute, useValue: mockActivatedRouter},
-        { provide: LocationStrategy, useClass: PathLocationStrategy },
-        { provide: Router, useValue: mockRouter },
-        { provide: APP_BASE_HREF, useValue: '/'},
+        { provide: ComponentFixtureAutoDetect, useValue: true }
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ]
     })
-    .compileComponents();
+    .compileComponents()
 
 
   }));
@@ -56,10 +49,27 @@ describe('EventComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EventComponent);
     component = fixture.componentInstance;
+
+    event = new Event(1, 'Football', 'Gym', new Date(), 'ball img');
+    component.event = event;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it( 'should contain date', () => {
+    de = fixture.debugElement.query(By.css('.date'));
+    el = de.nativeElement;
+
+    expect(el).not.toBeNull();
+  });
+
+  it( 'should contain delete button', () => {
+    de = fixture.debugElement.query(By.css('button'));
+    el = de.nativeElement;
+
+    expect(el).not.toBeNull();
   });
 });

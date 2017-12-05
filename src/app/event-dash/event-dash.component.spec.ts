@@ -1,36 +1,40 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
 import { EventService } from '../event.service';
-import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Event } from '../event';
 import { AuthService } from '../auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { Location, LocationStrategy, PathLocationStrategy, APP_BASE_HREF  } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { EventDetailsComponent } from '../event-details/event-details.component';
+import {By} from '@angular/platform-browser';
+import { DebugElement }    from '@angular/core';
+
 
 import { EventDashComponent } from './event-dash.component';
+
 
 describe('EventDashComponent', () => {
   let component: EventDashComponent;
   let fixture: ComponentFixture<EventDashComponent>;
-  let mockRouter = {
-    navigate: jasmine.createSpy('dashboard')
-  };
-  let mockActivatedRouter = {
-    navigate: jasmine.createSpy('dashboard')
-  };
-
+  let event: Event;
+  let de: DebugElement;
+  let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterModule,
-        HttpClientModule
+        FormsModule,
+        HttpClientModule,
+        RouterTestingModule.withRoutes([
+          { path: 'detail/:id', component: EventDetailsComponent },
+        ]),
       ],
-      declarations: [ EventDashComponent ],
-      providers: [ EventService,
+      declarations: [ EventDashComponent, EventDetailsComponent ],
+      providers: [
+        EventService,
         AuthService,
-        { provide: Router, useValue: mockRouter },
-        { provide: APP_BASE_HREF, useValue: '/dashboard'},
-        { provide: ActivatedRoute, useValue: mockActivatedRouter },
-        { provide: LocationStrategy, useClass: PathLocationStrategy },]
+        { provide: ComponentFixtureAutoDetect, useValue: true }
+      ]
     })
     .compileComponents();
   }));
@@ -38,10 +42,21 @@ describe('EventDashComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EventDashComponent);
     component = fixture.componentInstance;
+
+    event = new Event(1, 'Football', 'Gym', new Date(), 'ball img');
+    component.event = event;
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it( 'should have right element', () => {
+    de = fixture.debugElement.query(By.css('h1'));
+    el = de.nativeElement;
+
+    expect(el.innerText).toBe('Football');
+  })
 });
