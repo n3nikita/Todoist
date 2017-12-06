@@ -7,32 +7,56 @@ import { catchError, tap } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { settings } from './settings';
 
 
 @Injectable()
 export class EventService {
 
-  url: string = "http://localhost:58638/api/events/";
+  token: string = localStorage.getItem('token');
+
+  httpOptions: any = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',
+      'Authorization' : 'Bearer ' + this.token}),
+  };
+
+  imgHeader: any = {
+    headers: new HttpHeaders({'Authorization' : 'Bearer ' + this.token}),
+  };
+
+  txtHeader: any = {
+    headers: new HttpHeaders({ 'Authorization' : 'Bearer ' + this.token}),
+    responseType: 'text'
+  };
+
+
+  // updateToken(){
+  //   if(localStorage.getItem('token')){
+  //     this.token = localStorage.getItem('token');
+  //   } else {
+  //     this.token = null;
+  //   }
+  // }
 
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<any> {
-    return this.http.get(this.url)
+    return this.http.get(settings.url.events, this.httpOptions)
       .catch(this.handleError)
   }
 
   getEvent(id: number): Observable<any> {
-    return this.http.get(this.url + id, httpOptions)
+    return this.http.get(settings.url.events + id, this.httpOptions)
       .catch(this.handleError);
   }
 
   search(searchStr: string): Observable<any>{
-    return this.http.get(this.url + 'search/' + searchStr, httpOptions)
+    return this.http.get(settings.url.events + 'search/' + searchStr, this.httpOptions)
       .catch(this.handleError);
   }
 
   postEvent(event: Event): Observable<any>{
-    return this.http.post<Event>(this.url, event, httpOptions)
+    return this.http.post<Event>(settings.url.events, event, this.httpOptions)
       .catch(this.handleError);
   }
 
@@ -55,19 +79,19 @@ export class EventService {
 
     let formData: FormData = new FormData();
     formData.append('file', img);
-    return this.http.post(this.url + 'img', formData, imgHeader)
+    return this.http.post(settings.url.events + 'img', formData, this.imgHeader)
       .map(res => {return res})
       .catch(this.handleError);
 
   }
 
   putEvent(event: Event): Observable<any>{
-    return this.http.put(this.url, event, txtHeader)
+    return this.http.put(settings.url.events, event, this.txtHeader)
       .catch(this.handleError);
   }
 
   deleteEvent(id: number): Observable<any> {
-    return this.http.delete(this.url + id, txtHeader)
+    return this.http.delete(settings.url.events + id, this.txtHeader)
       .catch(this.handleError);
   }
 
@@ -76,18 +100,4 @@ export class EventService {
     return Observable.throw(error.message || error);
   }
 }
-
-const httpOptions: any = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                             'Authorization' : 'Bearer ' + localStorage.getItem('token')}),
-};
-
-const imgHeader: any = {
-  headers: new HttpHeaders({'Authorization' : 'Bearer ' + localStorage.getItem('token')}),
-};
-
-const txtHeader: any = {
-  headers: new HttpHeaders({ 'Authorization' : 'Bearer ' + localStorage.getItem('token')}),
-  responseType: 'text'
-};
 

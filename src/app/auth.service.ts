@@ -4,36 +4,40 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/do';
+import { Subject } from 'rxjs/Subject';
+import { settings } from './settings';
 
 
 @Injectable()
 export class AuthService {
 
-  url: string = "http://localhost:58638/api/account/";
   name: string = localStorage.getItem('username');
-  token: string;
+  private loggedIn = new Subject<boolean>();
+  loggedIn$ = this.loggedIn.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  setToken(){
-    if(!localStorage.getItem('token')){
-      localStorage.setItem('token', this.token);
-    }
-  }
+  // setToken(){
+  //   if(!localStorage.getItem('token')){
+  //     localStorage.setItem('token', this.token);
+  //   }
+  // }
 
   login(user){
-    return this.http.post(this.url + 'login', user)
+    return this.http.post(settings.url.account + 'login', user)
       .do(res => this.setSession(res, user.username))
       .catch(this.handleError);
   }
 
   signUp(user){
-    return this.http.post(this.url + 'register', user, httpOptions)
+    return this.http.post(settings.url.account + 'register', user, httpOptions)
       .do(res => this.setSession(res, user.username))
       .catch(this.handleError)
   }
 
   private setSession(authResult, username) {
+    localStorage.clear();
+    this.loggedIn.next(true);
     console.log('Token: ' + authResult);
     localStorage.setItem('token', authResult);
     localStorage.setItem('username', username);
@@ -42,6 +46,8 @@ export class AuthService {
 
   public logout() {
     localStorage.clear();
+    this.loggedIn.next(false);
+    //location.reload(); //TODO: must change (!!!)
   }
 
   public isLoggedIn() {
@@ -64,5 +70,5 @@ export class AuthService {
 
 const httpOptions: any = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
-  responseType: 'text'
+  responseType: 'json'
 };

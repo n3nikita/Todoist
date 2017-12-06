@@ -17,10 +17,13 @@ export class SignupComponent  {
 
 
   signup(username: string, password: string){
-    let user: User = {username, password} as User;
+    let user = {username, password} as User;
     this.authService.signUp(user)
       .subscribe(
-        () => this.router.navigateByUrl('/'),
+        () => {
+          this.router.navigateByUrl('/');
+          //location.reload(); //TODO: must change (!!!)
+        },
         err => this.exist = false
       );
   }

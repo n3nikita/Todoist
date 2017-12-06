@@ -9,7 +9,8 @@ export class Event {
                 name: string,
                 details: string,
                 date: Date,
-                image: string){
+                image: string,
+                ){
       this.id = id;
       this.name = name;
       this.details = details;

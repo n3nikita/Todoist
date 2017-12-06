@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { NotificationsService } from 'angular2-notifications';
 import { Location } from '@angular/common';
-
+import { settings } from '../settings';
 
 @Component({
   selector: 'app-event-details',
@@ -19,6 +19,7 @@ export class EventDetailsComponent implements OnInit {
   image: File;
   done: boolean = false;
   regExp: RegExp = new RegExp('image/(gif|jpg|jpeg|png)');
+  url: string = settings.url.image;
 
 
   constructor(
@@ -45,8 +46,8 @@ export class EventDetailsComponent implements OnInit {
     if (this.image) {
       this.eventService.postEventImg(this.image)
         .subscribe(
-        imgLink => {
-          event.image = imgLink;
+          () => {
+          event.image = this.image.name;
           this.eventService.putEvent(event)
             .subscribe(
             res => {

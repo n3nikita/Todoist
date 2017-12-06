@@ -2,7 +2,7 @@ import {Component, Input, Output, OnInit} from '@angular/core';
 import { Event } from '../event';
 import { AuthService } from '../auth.service';
 import { EventEmitter } from '@angular/core';
-
+import { settings } from '../settings';
 
 @Component({
   selector: 'app-event-dash',
@@ -17,6 +17,7 @@ export class EventDashComponent implements OnInit{
   @Output()
   deleter: EventEmitter<Event> = new EventEmitter();
 
+  url: string = settings.url.image;
 
   ngOnInit(){
     if(!this.event){

@@ -35,18 +35,18 @@ export class EventsListComponent implements OnInit {
     if(this.image){
       this.eventService.postEventImg(this.image)
       .subscribe(
-        image => {
-          let event: Event = {id: this.events.length+1, name, details, date, image} as Event;
+        () => {
+          let event: Event = { name, details, date, image: this.image.name } as Event;
           this.eventService.postEvent(event)
             .subscribe(
               res => {
                 this.events.push(res);
                 this.notify.success('Added successfully!', 'Event has been added.');
               },
-              err => this.notify.error('Error!', 'Event wasnt add')
+              err => this.notify.error('Error!', 'Event wasn\'t add')
             );
         },
-        err => this.notify.error('Error!', 'Image wasnt upload to the server')
+        err => this.notify.error('Error!', 'Image wasn\'t upload to the server')
       );
     } else {
       this.notify.error('Error!', 'You should add an image');
@@ -62,7 +62,7 @@ export class EventsListComponent implements OnInit {
           this.events.splice(index,1)
           this.notify.success('Deleted!', 'Event has been deleted.');
         },
-        err => this.notify.error('Error!', 'Event wasnt deleted')
+        err => this.notify.error('Error!', 'Event wasn\'t deleted')
       );
   }
 

@@ -18,11 +18,15 @@ export class LoginComponent {
   login(username: string, password: string) {
     let user = { username, password } as User;
     this.auth.login(user).subscribe(
-      () => this.router.navigateByUrl('/'),
+      (data) => {
+        //localStorage.setItem('token', data);
+        this.router.navigateByUrl('/');
+        //location.reload(); //TODO: must change (!!!)
+      },
       err => {
-          if(err.status === 401){
-            this.invalid = true;
-          }
+        if(err.status === 401){
+          this.invalid = true;
+        }
       }
     );
   }
