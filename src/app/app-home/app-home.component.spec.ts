@@ -2,23 +2,23 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
-import { AppAboutComponent } from './app-about.component';
+import { AppHomeComponent } from './app-home.component';
 
-describe('AppAboutComponent', () => {
-  let component: AppAboutComponent;
-  let fixture: ComponentFixture<AppAboutComponent>;
+describe('AppHomeComponent', () => {
+  let component: AppHomeComponent;
+  let fixture: ComponentFixture<AppHomeComponent>;
   let de: DebugElement;
   let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppAboutComponent ]
+      declarations: [ AppHomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppAboutComponent);
+    fixture = TestBed.createComponent(AppHomeComponent);
     component = fixture.componentInstance;
 
     de = fixture.debugElement.query(By.css('p'));

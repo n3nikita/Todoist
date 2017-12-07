@@ -14,7 +14,7 @@
       </event>
   </ul>
 
-  <form #form="ngForm">
+  <form [hidden]="searching" #form="ngForm">
     <div class="form-inline add-form" *ngIf="auth.isLoggedIn()">
 
       <input #name="ngModel" ngModel name="name" class="form-control" placeholder="Name" required/>

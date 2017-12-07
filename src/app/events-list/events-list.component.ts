@@ -17,6 +17,7 @@ export class EventsListComponent implements OnInit {
   image: File;
   regExp: RegExp = new RegExp('image/(jpg|jpeg|gif|png)');
   notFound: boolean = false;
+  searching: boolean = false;
 
 
   constructor(private eventService: EventService,
@@ -76,6 +77,7 @@ export class EventsListComponent implements OnInit {
   search(searchStr: string){
     if(searchStr.length == 0){
       this.notFound = false;
+      this.searching = false;
       return this.getEvents();
     }
 
@@ -83,9 +85,14 @@ export class EventsListComponent implements OnInit {
       .subscribe(
         res => {
           this.events = res;
+          this.searching = true;
           this.notFound = false;
         },
-        err => this.notFound = true
+        err => {
+          this.events = null;
+          this.notFound = true;
+          this.searching = true;
+        }
       );
   }
 }

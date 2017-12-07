@@ -4,12 +4,6 @@ import { DebugElement }    from '@angular/core';
 
 import { NotFoundComponent } from './not-found.component';
 
-
-
-
-
-
-
 describe('NotFoundComponent', () => {
   let component: NotFoundComponent;
   let fixture: ComponentFixture<NotFoundComponent>;

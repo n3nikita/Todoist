@@ -7,16 +7,12 @@ import { NotificationsService, SimpleNotificationsModule } from 'angular2-notifi
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import 'rxjs/add/observable/of';
 import { RouterTestingModule } from '@angular/router/testing';
-import {By} from '@angular/platform-browser';
-import { DebugElement }    from '@angular/core';
 
 import { EventDetailsComponent } from './event-details.component';
 
 describe('EventDetailsComponent', () => {
   let component: EventDetailsComponent;
   let fixture: ComponentFixture<EventDetailsComponent>;
-  let de: DebugElement;
-  let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

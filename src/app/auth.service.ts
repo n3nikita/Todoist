@@ -17,11 +17,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  // setToken(){
-  //   if(!localStorage.getItem('token')){
-  //     localStorage.setItem('token', this.token);
-  //   }
-  // }
 
   login(user){
     return this.http.post(settings.url.account + 'login', user)
@@ -47,7 +42,7 @@ export class AuthService {
   public logout() {
     localStorage.clear();
     this.loggedIn.next(false);
-    //location.reload(); //TODO: must change (!!!)
+    this.router.navigateByUrl('/');
   }
 
   public isLoggedIn() {

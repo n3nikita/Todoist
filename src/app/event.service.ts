@@ -29,18 +29,16 @@ export class EventService {
     responseType: 'text'
   };
 
-
-  // updateToken(){
-  //   if(localStorage.getItem('token')){
-  //     this.token = localStorage.getItem('token');
-  //   } else {
-  //     this.token = null;
-  //   }
-  // }
+  updateHeaders(token){
+    this.httpOptions.headers = new HttpHeaders({ 'Authorization' : 'Bearer ' + token});
+    this.imgHeader.headers = new HttpHeaders({'Authorization' : 'Bearer ' + token});
+    this.txtHeader.headers = new HttpHeaders({'Authorization' : 'Bearer ' + token});
+  }
 
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<any> {
+    this.updateHeaders(localStorage.getItem('token'));
     return this.http.get(settings.url.events, this.httpOptions)
       .catch(this.handleError)
   }

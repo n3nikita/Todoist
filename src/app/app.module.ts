@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { AppAboutComponent } from './app-about/app-about.component';
+import { AppHomeComponent } from './app-home/app-home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -25,7 +25,7 @@ import { EventDashComponent } from './event-dash/event-dash.component'
     AppComponent,
     EventsListComponent,
     EventDetailsComponent,
-    AppAboutComponent,
+    AppHomeComponent,
     NotFoundComponent,
     LoginComponent,
     SignupComponent,

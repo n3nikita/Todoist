@@ -78,13 +78,6 @@ export class EventDetailsComponent implements OnInit {
   getImage(images) {
     if (this.regExp.test(images[0].type)) {
       this.image = images[0];
-
-      // let reader: FileReader = new FileReader();
-      // let previewSrc: string;
-      // reader.onload = function(e) {
-      //   previewSrc = e.target.result;
-      // }
-      // reader.readAsDataURL(images[0]);
     } else {
       this.notify.error('Error!', 'Only images allowed');
     }

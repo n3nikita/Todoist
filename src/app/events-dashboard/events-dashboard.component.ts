@@ -15,6 +15,7 @@ export class EventsDashboardComponent implements OnInit {
   events: Event[];
   notFound: boolean = false;
   addClicked: boolean = false;
+  searching: boolean = false;
   image: File;
   regExp: RegExp = new RegExp('image/(jpg|jpeg|gif|png)');
 
@@ -23,11 +24,7 @@ export class EventsDashboardComponent implements OnInit {
     private notify: NotificationsService,
     private auth: AuthService
   )
-  {
-    // this.auth.loggedIn$.subscribe(status => {
-    //
-    // })
-  }
+  { }
 
   ngOnInit() {
     this.getAll();
@@ -36,7 +33,8 @@ export class EventsDashboardComponent implements OnInit {
   getAll(){
     return this.eventService.getEvents()
       .subscribe(
-        res => this.events = res
+        res => this.events = res,
+        err => this.events = null
       )
   }
 
@@ -55,6 +53,7 @@ export class EventsDashboardComponent implements OnInit {
   search(searchStr: string){
     if(searchStr.length == 0){
       this.notFound = false;
+      this.searching = false;
       return this.getAll();
     }
 
@@ -62,9 +61,14 @@ export class EventsDashboardComponent implements OnInit {
       .subscribe(
         res => {
           this.events = res;
+          this.searching = true;
           this.notFound = false;
         },
-        err => this.notFound = true
+        err => {
+          this.searching = true;
+          this.notFound = true;
+          this.events = null;
+        }
       )
   }
 

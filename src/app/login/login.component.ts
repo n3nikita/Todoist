@@ -18,10 +18,8 @@ export class LoginComponent {
   login(username: string, password: string) {
     let user = { username, password } as User;
     this.auth.login(user).subscribe(
-      (data) => {
-        //localStorage.setItem('token', data);
-        this.router.navigateByUrl('/');
-        //location.reload(); //TODO: must change (!!!)
+      () => {
+        this.router.navigateByUrl('/dashboard');
       },
       err => {
         if(err.status === 401){

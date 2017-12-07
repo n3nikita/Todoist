@@ -1,10 +1,10 @@
-.login-form {
+  .login-form {
     margin: 0 auto;
     width: 300px;
-}
+  }
 
-.login-form input {
+  .login-form input {
     width: 300px;
     margin: 10px auto;
-}
+  }
 

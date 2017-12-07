@@ -21,8 +21,7 @@ export class SignupComponent  {
     this.authService.signUp(user)
       .subscribe(
         () => {
-          this.router.navigateByUrl('/');
-          //location.reload(); //TODO: must change (!!!)
+          this.router.navigateByUrl('/dashboard');
         },
         err => this.exist = false
       );
