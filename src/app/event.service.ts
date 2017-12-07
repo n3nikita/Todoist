@@ -15,6 +15,8 @@ export class EventService {
 
   token: string = localStorage.getItem('token');
 
+  //TODO: add subject to update headers
+
   httpOptions: any = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
       'Authorization' : 'Bearer ' + this.token}),
@@ -59,9 +61,9 @@ export class EventService {
   }
 
   postEventImg(img: File): Observable<any>{
+
     // return this.http.post(this.url + 'img', img, imgHeader)
     //   .catch(this.handleError);
-
     // return Observable.fromPromise(new Promise((resolve, reject) => {
     //   let xhr = new XMLHttpRequest();
     //   xhr.open('POST', this.url + 'img', true);

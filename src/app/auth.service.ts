@@ -12,8 +12,8 @@ import { settings } from './settings';
 export class AuthService {
 
   name: string = localStorage.getItem('username');
-  private loggedIn = new Subject<boolean>();
-  loggedIn$ = this.loggedIn.asObservable();
+  // private loggedIn = new Subject<boolean>();
+  // loggedIn$ = this.loggedIn.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -32,7 +32,7 @@ export class AuthService {
 
   private setSession(authResult, username) {
     localStorage.clear();
-    this.loggedIn.next(true);
+    //this.loggedIn.next(true);
     console.log('Token: ' + authResult);
     localStorage.setItem('token', authResult);
     localStorage.setItem('username', username);
@@ -41,7 +41,7 @@ export class AuthService {
 
   public logout() {
     localStorage.clear();
-    this.loggedIn.next(false);
+    //this.loggedIn.next(false);
     this.router.navigateByUrl('/');
   }
 

@@ -46,8 +46,8 @@ export class EventDetailsComponent implements OnInit {
     if (this.image) {
       this.eventService.postEventImg(this.image)
         .subscribe(
-          () => {
-          event.image = this.image.name;
+          img => {
+          event.image = img;
           this.eventService.putEvent(event)
             .subscribe(
             res => {

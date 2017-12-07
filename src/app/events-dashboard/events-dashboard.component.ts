@@ -69,7 +69,7 @@ export class EventsDashboardComponent implements OnInit {
           this.notFound = true;
           this.events = null;
         }
-      )
+      );
   }
 
   getImage(images){
@@ -83,8 +83,8 @@ export class EventsDashboardComponent implements OnInit {
     if(this.image){
       this.eventService.postEventImg(this.image)
         .subscribe(
-          () => {
-            let event: Event = { name, details, date, image: this.image.name } as Event;
+          image=> {
+            let event: Event = { name, details, date, image } as Event;
             this.eventService.postEvent(event)
               .subscribe(
                 res => {
