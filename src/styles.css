@@ -11,10 +11,21 @@
     font-size: 13px;
 }
 
-input.ng-touched.ng-invalid {border:solid #FF4F4F 1px;}
+input.ng-touched.ng-dirty.ng-invalid {border:solid #FF4F4F 1px;}
 
 app-root{
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+
+.primary {
+  color: black !important;
+  background-color: #c6c6c6 !important;
+  transition: 0.2s ease;
+}
+
+.primary:hover{
+  background-color: #9b9b9b !important;
 }

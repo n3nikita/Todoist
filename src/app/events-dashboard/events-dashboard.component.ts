@@ -84,12 +84,13 @@ export class EventsDashboardComponent implements OnInit {
       this.eventService.postEventImg(this.image)
         .subscribe(
           image=> {
-            let event: Event = { name, details, date, image } as Event;
+            let event: Event = { name, details, date, image, done: false } as Event;
             this.eventService.postEvent(event)
               .subscribe(
                 res => {
                   this.events.push(res);
                   this.addClicked = !this.addClicked;
+                  this.image = null;
                   this.notify.success('Added successfully!', 'Event has been added.');
                 },
                 err => this.notify.error('Error!', 'Event wasn\'t add')

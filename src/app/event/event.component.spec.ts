@@ -41,7 +41,7 @@ describe('EventComponent', () => {
         CUSTOM_ELEMENTS_SCHEMA
       ]
     })
-    .compileComponents()
+    .compileComponents();
 
 
   }));
@@ -50,7 +50,7 @@ describe('EventComponent', () => {
     fixture = TestBed.createComponent(EventComponent);
     component = fixture.componentInstance;
 
-    event = new Event(1, 'Football', 'Gym', new Date(), 'ball img');
+    event = new Event(1, 'Football', 'Gym', new Date(), 'ball img', false);
     component.event = event;
     fixture.detectChanges();
   });

@@ -3,6 +3,7 @@ li {
   line-height: 50px;
   border-bottom: 1px solid #E0E0E0;
   transition: all 0.2s ease;
+  color: black;
 
   /*list-style-type: decimal;*/
 }
@@ -30,7 +31,7 @@ li button {
   border-radius: 0;
 }
 
-a {
+li a {
   text-decoration: none;
   color: black;
   float: left;
@@ -44,4 +45,12 @@ a {
 .input-file {
   display: block;
   padding: 0;
+}
+
+.event-done{
+  color: #cacaca;
+}
+
+.event-done span {
+  text-decoration: line-through;
 }

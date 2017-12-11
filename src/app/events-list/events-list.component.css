@@ -73,3 +73,7 @@
    width: 300px;
    margin: -20px auto 0;
  }
+
+ .invalid {
+   border: 1px solid red;
+ }

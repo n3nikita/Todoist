@@ -37,7 +37,7 @@ export class EventsListComponent implements OnInit {
       this.eventService.postEventImg(this.image)
       .subscribe(
         image => {
-          let event: Event = { name, details, date, image } as Event;
+          let event: Event = { name, details, date, image, done: false } as Event;
           this.eventService.postEvent(event)
             .subscribe(
               res => {

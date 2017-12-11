@@ -13,11 +13,15 @@ import { ConfirmationService } from '@jaspero/ng2-confirmations';
 })
 export class EventComponent implements OnInit{
 
+  //TODO: Add checkbox to det done and undone. Add right click event.
+
   @Output()
   deleter: EventEmitter<Event> = new EventEmitter();
 
   @Input()
   event: Event;
+
+  eventDone: boolean;
 
   constructor(private eventService: EventService,
               private auth: AuthService,
@@ -25,9 +29,10 @@ export class EventComponent implements OnInit{
 
 
   ngOnInit(){
-    if(!this.event){
-      this.event = new Event(1, 'test', 'test', new Date(), 'test');
-    }
+    // if(!this.event){
+    //   this.event = new Event(1, 'test', 'test', new Date(), 'test', false);
+    // }
+    this.eventDone = this.event.done;
   }
 
   deleteEvent(event){
