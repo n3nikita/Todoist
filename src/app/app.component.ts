@@ -16,4 +16,12 @@ export class AppComponent {
     maxStack: 3,
     animate: "fromBottom"
   }
+
+  public confirmOptions = {
+    overlay: true,
+    overlayClickToClose: true,
+    showCloseButton: true,
+    confirmText: 'Yes',
+    declineText: 'No'
+  }
 }

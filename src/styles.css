@@ -7,9 +7,14 @@
 .error-block {
     color: #FF3434;
     margin-top: -10px;
-    margin-left: 5px; 
+    margin-left: 5px;
     font-size: 13px;
 }
 
 input.ng-touched.ng-invalid {border:solid #FF4F4F 1px;}
- 
+
+app-root{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}

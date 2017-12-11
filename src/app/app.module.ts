@@ -15,9 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventComponent } from './event/event.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import {JasperoConfirmationsModule} from '@jaspero/ng2-confirmations';
 import { CustomFormsModule } from 'ng2-validation';
 import { EventsDashboardComponent } from './events-dashboard/events-dashboard.component';
 import { EventDashComponent } from './event-dash/event-dash.component'
+
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { EventDashComponent } from './event-dash/event-dash.component'
     FormsModule,
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
-    CustomFormsModule
+    CustomFormsModule,
+    JasperoConfirmationsModule
   ],
   providers: [ EventService, AuthService ],
   bootstrap: [AppComponent]
