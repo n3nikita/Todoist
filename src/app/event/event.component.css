@@ -9,7 +9,7 @@ li {
 }
 
 li:hover {
-  background-color: #CECECE;
+  background-color: #e9e9e9;
 }
 
 .date {
@@ -29,6 +29,10 @@ li button {
   line-height: 30px;
   padding: 0;
   border-radius: 0;
+}
+
+li button:hover{
+  background-color: #d65858;
 }
 
 li a {
@@ -53,4 +57,11 @@ li a {
 
 .event-done span {
   text-decoration: line-through;
+}
+
+.event-done-checkBox{
+  float: left;
+  margin-left: 5px;
+  margin-top: 19px;
+  line-height: 50px;
 }

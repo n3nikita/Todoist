@@ -21,8 +21,6 @@ export class EventComponent implements OnInit{
   @Input()
   event: Event;
 
-  eventDone: boolean;
-
   constructor(private eventService: EventService,
               private auth: AuthService,
               private confirm: ConfirmationService) { }
@@ -32,7 +30,6 @@ export class EventComponent implements OnInit{
     // if(!this.event){
     //   this.event = new Event(1, 'test', 'test', new Date(), 'test', false);
     // }
-    this.eventDone = this.event.done;
   }
 
   deleteEvent(event){
@@ -42,5 +39,10 @@ export class EventComponent implements OnInit{
           this.deleter.emit(event);
         }
       })
+  }
+
+  updateEvent(){
+    this.eventService.putEvent(this.event)
+      .subscribe(() => {});
   }
 }

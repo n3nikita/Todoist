@@ -1,6 +1,7 @@
-<li class="row" [class.event-done]="eventDone" >
-  <a class="col-md-10" [routerLink]="['/detail/' + event.id]">
-    <span [class.event-done]="eventDone">{{event.name}}</span>
+<li class="row" [class.event-done]="event.done" >
+  <input (change)="updateEvent()" class="event-done-checkBox" [(ngModel)]="event.done" type="checkbox">
+  <a class="col-md-9" [routerLink]="['/detail/' + event.id]">
+    <span [class.event-done]="event.done">{{event.name}}</span>
   </a>
   <button class="col-md-2 btn"  [ngClass]="{vis: !auth.isLoggedIn()}" (click)="deleteEvent(event)">
     <span class="glyphicon glyphicon-trash"></span>
