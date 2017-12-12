@@ -49,5 +49,20 @@
     display: block;
  }
 
+ .event-done-checkBox + label span{
+   margin: 5px 10px 0 0;
+ }
 
+ .event-done-checkBox + label {
+   font-size: 20px;
+ }
+
+ .event-done-checkBox:checked + label{
+   color: #cacaca;
+   text-decoration: line-through;
+ }
+
+ .event-details {
+   margin-top: 15px;
+ }
 

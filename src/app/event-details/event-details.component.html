@@ -1,8 +1,14 @@
 <div *ngIf="done" class="container">
 
     <div [ngClass]="{invisible: visibility}">
-        <h3>{{event.name}}<span> ({{event.date | date:"dd.MM"}})</span></h3>
-        <p>{{event.details}} </p>
+      <input id="{{event.id}}" (change)="updateEvent()" class="event-done-checkBox" [(ngModel)]="event.done" type="checkbox">
+      <label for="{{event.id}}">
+        <span></span>
+        {{event.name}} ({{event.date | date:"dd.MM"}})
+      </label>
+      <br>
+      <!--<h3>{{event.name}}<span> ({{event.date | date:"dd.MM"}})</span></h3>-->
+        <p class="event-details">{{event.details}} </p>
         <div class="details-img">
             <a target="_blank" href="{{url}}{{event.image}}"><img src="{{url}}{{event.image}}" alt="{{event.name}}" class="img-responsive" ></a>
         </div>

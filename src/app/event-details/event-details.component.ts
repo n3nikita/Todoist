@@ -83,8 +83,14 @@ export class EventDetailsComponent implements OnInit {
     }
   }
 
+  updateEvent(){
+    this.eventService.putEvent(this.event)
+      .subscribe(() => {});
+  }
+
   goBack(){
     this.location.back();
   }
+
 
 }

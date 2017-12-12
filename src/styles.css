@@ -33,3 +33,37 @@ app-root{
 .default{
   border: 1px solid #d7d7d7 !important;
 }
+
+.event-done-checkBox + label{
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.event-done-checkBox{
+  display: none;
+}
+
+.event-done-checkBox + label span{
+  float: left;
+  display:inline-block;
+  margin: 15px 0 0 5px;
+  width:18px;
+  height:18px;
+  border: 2px solid #cfcfcf;
+  border-radius: 10px;
+  /*background:url(check_radio_sheet.png) left top no-repeat;*/
+  background-color: white;
+  transition: 0.2s ease;
+  cursor:pointer;
+}
+
+.event-done-checkBox + label span:hover{
+  border: 2px solid #929292;
+}
+
+.event-done-checkBox:checked + label span {
+  /*background:url(check_radio_sheet.png) -19px top no-repeat;*/
+  border: none;
+  background-color: #4fc53f;
+}

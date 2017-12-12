@@ -1,5 +1,5 @@
 <li class="row" [class.event-done]="event.done" >
-  <input (change)="updateEvent()" class="event-done-checkBox" [(ngModel)]="event.done" type="checkbox">
+  <input id="{{event.id}}" (change)="updateEvent()" class="event-done-checkBox" [(ngModel)]="event.done" type="checkbox"><label for="{{event.id}}"><span></span></label>
   <a class="col-md-9" [routerLink]="['/detail/' + event.id]">
     <span [class.event-done]="event.done">{{event.name}}</span>
   </a>

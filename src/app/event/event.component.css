@@ -36,6 +36,7 @@ li button:hover{
 }
 
 li a {
+  font-size: larger;
   text-decoration: none;
   color: black;
   float: left;
@@ -59,9 +60,11 @@ li a {
   text-decoration: line-through;
 }
 
-.event-done-checkBox{
-  float: left;
-  margin-left: 5px;
-  margin-top: 19px;
-  line-height: 50px;
-}
+/*.event-done-checkBox{*/
+  /*float: left;*/
+  /*margin-left: 5px;*/
+  /*margin-top: 19px;*/
+  /*line-height: 50px;*/
+/*}*/
+
+
