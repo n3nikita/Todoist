@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.css';
 *{
-    font-family: Calibri;
+  font-family: 'Didact Gothic';
 }
+
+
 
 .error-block {
     color: #FF3434;

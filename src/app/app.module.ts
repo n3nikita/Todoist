@@ -19,7 +19,7 @@ import {JasperoConfirmationsModule} from '@jaspero/ng2-confirmations';
 import { CustomFormsModule } from 'ng2-validation';
 import { EventsDashboardComponent } from './events-dashboard/events-dashboard.component';
 import { EventDashComponent } from './event-dash/event-dash.component'
-
+import { SidebarModule } from "ng-sidebar";
 
 
 @NgModule({
@@ -42,6 +42,7 @@ import { EventDashComponent } from './event-dash/event-dash.component'
     FormsModule,
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
+    SidebarModule.forRoot(),
     CustomFormsModule,
     JasperoConfirmationsModule
   ],

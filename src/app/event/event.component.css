@@ -36,7 +36,7 @@ li button:hover{
 }
 
 li a {
-  font-size: larger;
+  /*font-size: larger;*/
   text-decoration: none;
   color: black;
   float: left;

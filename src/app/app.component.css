@@ -1,50 +1,59 @@
   *{
-    font-family: "Calibri Light";
+    font-family: 'Didact Gothic';
+    font-size: 18px;
+
+    overflow: hidden;
   }
 
   body{
     margin: 0;
+
   }
 
   .navbar{
     border-radius: 0px;
+    padding: 10px 5px;
+    background-color: #3f51b5;
   }
 
   .nav{
     width: 100%;
-    height: 20px;
+    color: white;
   }
 
   .nav .navbar-nav ul{
-    margin: 0px;
+    margin: 3px 0;
     padding: 0px;
     display: inline-block;
   }
 
   .nav-link{
-    height: 48px;
-    line-height: 48px;
     list-style-type: none;
     display: inline-block;
   }
 
   .nav-link a{
-    color: black;
-    height: 48px;
-    line-height: 48px;
+    color: white;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 3px;
     display: block;
     padding: 0 10px;
     text-align: center;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
+  }
+
+  .nav-link a:focus{
+    background-color: #4350a0;
   }
 
   .nav-link a:hover{
-    background-color: #EEEEEE;
+    background-color: #4350a0;
   }
 
   .link-active{
-    font-weight: bold;
+    background-color: #4350a0;
   }
 
   footer{
