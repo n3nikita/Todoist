@@ -8,7 +8,7 @@
       </label>
       <br>
       <!--<h3>{{event.name}}<span> ({{event.date | date:"dd.MM"}})</span></h3>-->
-        <p class="event-details">{{event.details}} </p>
+        <p [class.event-done]="event.done" class="event-details">{{event.details}} </p>
         <div class="details-img">
             <a target="_blank" href="{{url}}{{event.image}}"><img src="{{url}}{{event.image}}" alt="{{event.name}}" class="img-responsive" ></a>
         </div>

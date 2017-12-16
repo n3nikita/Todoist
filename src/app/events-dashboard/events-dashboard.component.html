@@ -21,12 +21,14 @@
           Date must be between 2000 and 2099
         </div>
 
+
+        <button style="margin-left: 10px" [disabled]="form.invalid" (click)="add(name.value, details.value, date.value)" class="btn">Add</button>
+        <button (click)="addClicked = !addClicked" class="btn">Cancel</button>
         <label class="btn btn-default btn-file">
           Image<input #image name="image" (change)="getImage(image.files)" type="file" accept="image/*" required/>
         </label>
       </form>
-      <button style="margin-left: 10px" [disabled]="form.invalid" (click)="add(name.value, details.value, date.value)" class="btn">Add</button>
-      <button (click)="addClicked = !addClicked" class="btn">Cancel</button>
+
     </div>
     </div>
   </div>

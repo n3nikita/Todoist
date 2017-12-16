@@ -21,9 +21,6 @@ export class EventDashComponent implements OnInit{
   url: string = settings.url.image;
 
   ngOnInit(){
-    if(!this.event){
-      this.event = new Event(1, 'test', 'test', new Date(), 'test', false);
-    }
   }
 
   constructor(private auth: AuthService,
@@ -35,6 +32,6 @@ export class EventDashComponent implements OnInit{
         if(res.resolved){
           this.deleter.emit(event);
         }
-      })
+      });
   }
 }

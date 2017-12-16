@@ -12,10 +12,10 @@
   padding: 0 ;
   text-align: center;
   width: 350px;
-  height: 300px;
+  height: 200px;
   margin: 10px 20px;
   background-color: #ececec;
-  line-height: 300px;
+  line-height: 200px;
   font-size: 70px;
   transition: 0.2s ease;
   cursor: pointer;
@@ -26,16 +26,16 @@
 }
 
 .event-add-clicked{
-  padding-top: 20px;
+  padding-top: 5px;
   width: 350px;
-  height: 300px;
+  height: 200px;
   margin: 10px 20px;
-  box-shadow: 1px 1px 2px 0px gray;
+  box-shadow: 0px 0px 30px -1px rgba(166,166,166,0.55);
 }
 
 .event-add-clicked input{
   width: 300px;
-  margin: 20px auto;
+  margin: 9px auto;
 }
 
 .btn-file input[type=file]{
@@ -51,13 +51,13 @@
   outline: none;
   background: white;
   cursor: inherit;
-  display: block;
+
 }
 
 .btn-file{
   position: relative;
   overflow: hidden;
-  margin: -5px 10px 10px;
+  margin: 5px 5px 5px;
 }
 
 .error-block{
