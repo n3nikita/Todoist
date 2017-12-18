@@ -70,3 +70,7 @@
    text-decoration: line-through;
    color: #cacaca;
  }
+
+ .btn-danger {
+   background-color: #FC5757;
+ }

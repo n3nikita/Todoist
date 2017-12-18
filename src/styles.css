@@ -69,3 +69,15 @@ app-root{
   border: none;
   background-color: #4fc53f;
 }
+
+
+.demo-sidebar {
+  width: 300px;
+  background-color: white;
+  /*box-shadow: 0 0 20px 0px gray;*/
+}
+
+.ng-sidebar--opened{
+
+  box-shadow: 0 0 20px 0px gray !important;
+}

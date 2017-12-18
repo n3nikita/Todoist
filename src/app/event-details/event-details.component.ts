@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 import { NotificationsService } from 'angular2-notifications';
 import { Location } from '@angular/common';
 import { settings } from '../settings';
+import { ConfirmationService } from '@jaspero/ng2-confirmations';
 
 @Component({
   selector: 'app-event-details',
@@ -27,6 +28,7 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private auth: AuthService,
     private notify: NotificationsService,
+    private confirm: ConfirmationService,
     private location: Location
   ) { }
 
@@ -36,9 +38,6 @@ export class EventDetailsComponent implements OnInit {
 
   getEvent() {
     let id = +this.route.snapshot.paramMap.get('id');
-    if(!id){
-      id = 1;
-    }
     this.eventService.getEvent(id).subscribe( res => { this.event = res; this.done = true; });
   }
 
@@ -92,5 +91,17 @@ export class EventDetailsComponent implements OnInit {
     this.location.back();
   }
 
+  deleteEvent(){
+    this.confirm.create("Are you sure?", "Are you sure you want to delete this event?")
+      .subscribe(res => {
+        if(res.resolved){
+          let id = +this.route.snapshot.paramMap.get('id');
+          this.eventService.deleteEvent(id)
+            .subscribe(() => {
+              this.goBack();
+            });
+        }
+      });
+  }
 
 }

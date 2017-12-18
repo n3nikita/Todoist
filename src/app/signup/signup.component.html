@@ -4,15 +4,15 @@
 
   <form #form="ngForm" class="login-form">
 
+    <input #name="ngModel" ngModel name="name" autocomplete="off" class="form-control" minlength="4" type="text" placeholder="Name" required />
+
+    <input #email="ngModel" ngModel name="email" autocomplete="off" class="form-control" minlength="" type="email" placeholder="Email" required />
+
     <input #username="ngModel" ngModel name="username" autocomplete="off" class="form-control" minlength="4" type="text" placeholder="Username"
       (ngModelChange)="onUsernameChange($event)" required />
 
     <div [hidden]="username.valid || username.untouched" class="error-block">
       Invalid username. Minimum length: 4.
-    </div>
-
-    <div [hidden]="exist" class="error-block">
-      Username already exists.
     </div>
 
 
@@ -23,8 +23,19 @@
       Minimum length: 8. Must contain at least one UpperCase, LowerCase and Number.
     </div>
 
-    <button [disabled]="form.invalid || !exist" class="btn" (click)="signup(username.value, password.value)" type="submit">Sign Up</button>
-  
+    <input #confirmPassword="ngModel" ngModel name="confirmPassword" autocomplete="off" class="form-control" type="password"
+           placeholder="Confirm Password" required />
+
+    <div [hidden]="password.value == confirmPassword.value || (password.untouched && confirmPassword.untouched)" class="error-block">
+      Passwords doesn't match.
+    </div>
+
+    <div [hidden]="exist" class="error-block">
+      User with same name or email already exists.
+    </div>
+
+    <button [disabled]="form.invalid || !exist" class="btn" (click)="signup(name.value, email.value, username.value, password.value)" type="submit">Sign Up</button>
+
   </form>
 
 </div>

@@ -4,6 +4,7 @@ import { Event } from '../event';
 import { NgModel } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { NotificationsService } from 'angular2-notifications';
+// declare var $: any;
 
 
 @Component({
@@ -27,6 +28,8 @@ export class EventsListComponent implements OnInit {
   ngOnInit() {
     this.getEvents();
   }
+
+  opened: boolean = false;
 
   getEvents() {
     this.eventService.getEvents().subscribe( res => this.events = res);

@@ -4,5 +4,4 @@ export const settings = {
     account: 'http://localhost:58638/api/account/',
     image: 'http://localhost:58638/img/',
   }
-
 };

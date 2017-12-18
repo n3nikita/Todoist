@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { EventService } from '../event.service';
 import { EventEmitter } from '@angular/core';
 import { ConfirmationService } from '@jaspero/ng2-confirmations';
+declare var $: any;
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ConfirmationService } from '@jaspero/ng2-confirmations';
 })
 export class EventComponent implements OnInit{
 
-  //TODO: Add checkbox to det done and undone. Add right click event.
+  //TODO: Add right click event.
 
   @Output()
   deleter: EventEmitter<Event> = new EventEmitter();
@@ -23,13 +24,30 @@ export class EventComponent implements OnInit{
 
   constructor(private eventService: EventService,
               private auth: AuthService,
-              private confirm: ConfirmationService) { }
+              private confirm: ConfirmationService) {}
 
 
   ngOnInit(){
-    // if(!this.event){
-    //   this.event = new Event(1, 'test', 'test', new Date(), 'test', false);
-    // }
+    // console.log('AfterContentInit');
+    // $(document).bind("contextmenu", function (event) {
+    //   // Avoid the real one
+    //   event.preventDefault();
+    //   // Show contextmenu
+    //   $(".contextMenu").
+    //
+    //   // In the right position (the mouse)
+    //   css({
+    //     top: event.pageY + "px",
+    //     left: event.pageX + "px",
+    //     display: 'inline'
+    //   });
+    //
+    //   $(".contextMenu a:first").text(event.name);
+    // });
+    //
+    // $(document).click(function () {
+    //   $('.contextMenu').css('display', 'none');
+    // });
   }
 
   deleteEvent(event){

@@ -5,6 +5,7 @@ import { EventEmitter } from '@angular/core';
 import { settings } from '../settings';
 import { ConfirmationService } from '@jaspero/ng2-confirmations';
 
+
 @Component({
   selector: 'app-event-dash',
   templateUrl: './event-dash.component.html',

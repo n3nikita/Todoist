@@ -1,4 +1,4 @@
-<li class="row" [class.event-done]="event.done" >
+<li class="row event" [class.event-done]="event.done" >
   <input id="{{event.id}}" (change)="updateEvent()" class="event-done-checkBox" [(ngModel)]="event.done" type="checkbox"><label for="{{event.id}}"><span></span></label>
   <a class="col-md-9" [routerLink]="['/detail/' + event.id]">
     <span [class.event-done]="event.done">{{event.name}}</span>
@@ -8,3 +8,4 @@
   </button>
   <span class="date">{{event.date | date:"dd.MM"}}</span>
 </li>
+

@@ -15,7 +15,7 @@ export class EventService {
 
   token: string = localStorage.getItem('token');
 
-  //TODO: add subject to update headers
+  // TODO: add subject to update headers
 
   httpOptions: any = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',

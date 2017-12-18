@@ -67,4 +67,11 @@ li a {
   /*line-height: 50px;*/
 /*}*/
 
+.contextMenu {
+  display: none;
+  position: absolute;
+}
 
+.contextMenu li {
+  height: 20px;
+}

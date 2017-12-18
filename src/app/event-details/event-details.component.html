@@ -13,6 +13,7 @@
             <a target="_blank" href="{{url}}{{event.image}}"><img src="{{url}}{{event.image}}" alt="{{event.name}}" class="img-responsive" ></a>
         </div>
         <button *ngIf="auth.isLoggedIn()" id="btnEdt" class="btn" (click)="allowEdit()">Edit</button>
+        <button *ngIf="auth.isLoggedIn()" class="btn" (click)="deleteEvent()">Delete</button>
         <a (click)="goBack()" class="btn">Back to all items</a>
     </div>
 

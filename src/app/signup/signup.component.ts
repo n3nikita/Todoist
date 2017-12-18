@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
+import {Registeruser} from '../registeruser';
 
 @Component({
   selector: 'app-signup',
@@ -16,9 +17,9 @@ export class SignupComponent  {
               private router: Router) { }
 
 
-  signup(username: string, password: string){
-    let user = {username, password} as User;
-    this.authService.signUp(user)
+  signup(name: string, email: string, username: string, password: string){
+    let RegUser = { name, email, username, password } as Registeruser;
+    this.authService.signUp(RegUser)
       .subscribe(
         () => {
           this.router.navigateByUrl('/dashboard');
